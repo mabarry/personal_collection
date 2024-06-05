@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Matthew's Collection</title>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
-    <body>
-        <h1>Welcome to My Personal Collection!</h1>
-        <script src="js/scripts.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="css/enter-styles.css">
+</head>
+<body>
+    <div class="background"></div> <!-- Add the background div here -->
+    <div class="wrapper">
+        <h1>Welcome. Matthew's Collection Awaits...</h1>
+        <a href="/homepage" class="go-button"><button></button></a>
+        <p class="bottom-text">feel free to chill here and listen to the music</p>
+    </div>
+
+    <script>
+        var audio = new Audio('js/xtal.mp3');
+        // Play the audio when the page is loaded
+        window.addEventListener('load', function() {
+            audio.play();
+        });
+    </script>
+
+    <script src="js/scripts.js"></script>
+</body>
 </html>

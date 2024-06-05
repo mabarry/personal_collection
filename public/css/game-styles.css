@@ -1,0 +1,137 @@
+/* styles.css */
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #eaeff8, #88b3dd); /* Adjust the color codes as needed */
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    height: 100vh; /* Make the body span the entire viewport height */
+}
+
+.wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #ffffff;
+    background-color: #4f4faf;
+    font-size: 2rem;
+    margin: 20px 0;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+h1::before,
+h1::after {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/gifs/gameboy.gif');
+    background-size: cover;
+}
+
+h1::before {
+    background-position: center right;
+    margin-right: 50px;
+}
+
+h1::after {
+    background-position: center left;
+    margin-left: 50px;
+}
+
+.main-container {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #000080;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+}
+
+.navbar {
+    background-color: #000080;
+    margin-bottom: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar .back-button button {
+    background-color: transparent; /* Remove any background color */
+    background-image: url('../images/gifs/back-arrow.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 15; /* Remove any padding */
+    margin-bottom: 20; /* Remove any margin */
+}
+
+.navbar button {
+    background-color: #c7c5eb;
+    color: #000;
+    border: 1px solid #9898cf;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar button img {
+    width: 20px; /* Adjust the size of the back arrow image */
+    height: auto;
+    vertical-align: middle;
+    margin-right: 5px; /* Adjust the spacing between the image and text */
+}
+
+.navbar button:hover {
+    background-color: #000031;
+    color: #ffffff;
+}
+
+.content {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: calc(15% - 20px);
+    background-size: contain;
+    background-repeat: repeat-y;
+    margin-left: 70px;
+    margin-right: 70px;
+    z-index: 0;
+}
+
+body::before {
+    left: 0;
+    background-image: url('../images/gifs/mario-64-head.gif');
+}
+
+body::after {
+    right: 0;
+    background-image: url('../images/gifs/star.gif');
+}

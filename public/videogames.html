@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Games</title>
+    <link rel="stylesheet" href="css/game-styles.css">
+    <style>
+        /* Additional CSS for the image placeholders */
+        .image-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Matthew's Video Game Collection!</h1>
+        <div class="main-container">
+            <header>
+                <nav class="navbar">
+                    <a href="/homepage" class="back-button"><button></button></a>
+                    <a href="/videogame-wishlist"><button>Wishlist</button></a>
+                </nav>
+            </header>
+            <main class="content">
+                <!-- Empty table for dynamic addition of items -->
+                <table id="item-table">
+                    <!-- Table body will be populated dynamically -->
+                </table>
+                <!-- Input fields for adding new items -->
+                <input type="file" id="file-input">
+                <input type="text" id="title-input" placeholder="Enter title">
+                <input type="text" id="description-input" placeholder="Enter description">
+                <button id="add-item-button">Add Item</button>
+                <button id="save-items-button">Save Items</button>
+            </main>
+        </div>
+    </div>
+    <script>
+        // Create an audio element
+        var audio = new Audio('js/mii-maker.mp3');
+        
+        // Play the audio when the page is loaded
+        window.addEventListener('load', function() {
+            audio.play();
+        });
+
+        // Function to add a new item to the table
+        function addItem() {
+            var fileInput = document.getElementById('file-input');
+            var titleInput = document.getElementById('title-input');
+            var descriptionInput = document.getElementById('description-input');
+
+            // Get the file object from file input
+            var file = fileInput.files[0];
+
+            // Create a new table row
+            var table = document.getElementById('item-table');
+            var newRow = table.insertRow();
+            
+            // Create cells for image, title, and description
+            var imageCell = newRow.insertCell();
+            var titleCell = newRow.insertCell();
+            var descriptionCell = newRow.insertCell();
+
+            // Create an image element
+            var image = document.createElement('img');
+            image.src = URL.createObjectURL(file);
+            image.width = 100;
+            image.height = 100;
+            image.alt = "Image";
+
+            // Append the image to the cell
+            imageCell.appendChild(image);
+
+            // Add title and description
+            titleCell.textContent = titleInput.value;
+            descriptionCell.textContent = descriptionInput.value;
+        }
+
+        // Function to save items (you can customize this according to your requirements)
+        function saveItems() {
+            // Here you can implement the logic to save the items, such as sending them to a server or storing them locally.
+            alert("Items saved successfully!");
+        }
+
+        // Event listener for the Add Item button
+        document.getElementById("add-item-button").addEventListener("click", addItem);
+
+        // Event listener for the Save Items button
+        document.getElementById("save-items-button").addEventListener("click", saveItems);
+    </script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
