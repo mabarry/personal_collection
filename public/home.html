@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="background"></div>
     <div class="wrapper">
         <h1>Welcome to Matthew's Collection Home!</h1>
         <div class="main-container">
@@ -25,6 +26,23 @@
             <img src="images/mute.png" alt="Mute" class="mute-button">
         </div>
     </div>
+    <script>
+        var audio = new Audio('music/sonic-cd-da-garden-jp.mp3');
+        audio.loop = true;
+        var isPlaying = false;
+
+        document.querySelector('.mute-button').addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                this.src = 'images/mute.png';
+            } else {
+                audio.play();
+                isPlaying = true;
+                this.src = 'images/unmute.png';
+            }
+        });
+    </script>
     <script src="js/scripts.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@
     </style>
 </head>
 <body>
+    <div class="background"></div>
     <div class="wrapper">
         <h1>Matthew's Vinyl Record Collection!</h1>
         <div class="main-container">
@@ -37,15 +38,25 @@
                 <button id="add-item-button">Add Item</button>
                 <button id="save-items-button">Save Items</button>
             </main>
+
+            <img src="images/mute.png" alt="Mute" class="mute-button">
         </div>
     </div>
     <script>
-        // Create an audio element
-        var audio = new Audio('js/smile-mediation.mp3');
-        
-        // Play the audio when the page is loaded
-        window.addEventListener('load', function() {
-            audio.play();
+        var audio = new Audio('music/smile-mediation.mp3');
+        audio.loop = true; // Enable looping of the music
+        var isPlaying = false;
+
+        document.querySelector('.mute-button').addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                this.src = 'images/mute.png';
+            } else {
+                audio.play();
+                isPlaying = true;
+                this.src = 'images/unmute.png';
+            }
         });
 
         // Function to add a new item to the table

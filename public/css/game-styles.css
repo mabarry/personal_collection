@@ -1,19 +1,32 @@
-/* styles.css */
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #eaeff8, #88b3dd); /* Adjust the color codes as needed */
+    background: linear-gradient(to bottom, #eaeff8, #88b3dd);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
     padding: 0;
     text-align: center;
     position: relative;
-    height: 100vh; /* Make the body span the entire viewport height */
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/gifs/wii-u.gif');
+    background-size: cover;
+    opacity: .4;
+    z-index: -1;
 }
 
 .wrapper {
     position: relative;
     z-index: 1;
+    padding-right: 0px;
 }
 
 h1 {
@@ -63,6 +76,35 @@ h1::after {
 .navbar {
     background-color: #000080;
     margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mute-button,
+.snake-button {
+    width: 30px; /* Set the width of the button */
+    height: 30px; /* Set the height of the button */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background-size: contain;
+}
+
+.mute-button img,
+.snake-button img {
+    width: 100%; /* Ensure the image fills the button */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.mute-button {
+    right: 20px; /* Adjust the horizontal position */
+}
+
+.snake-button {
+    left: 20px; /* Adjust the horizontal position */
 }
 
 .navbar a {
@@ -134,4 +176,51 @@ body::before {
 body::after {
     right: 0;
     background-image: url('../images/gifs/star.gif');
+}
+
+/* Additional CSS for the modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 640px; /* Could be more or less, depending on screen size */
+    height: 500pxpx;
+    overflow: hidden; /* Hide scrollbar */
+    position: relative;
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Adjustments for responsiveness */
+@media only screen and (max-width: 600px) {
+    .modal-content {
+        width: 200%;
+    }
 }

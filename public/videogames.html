@@ -5,18 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Games</title>
     <link rel="stylesheet" href="css/game-styles.css">
-    <style>
-        /* Additional CSS for the image placeholders */
-        .image-placeholder {
-            width: 100px;
-            height: 100px;
-            background-color: #ccc;
-            margin: 5px;
-            display: inline-block;
-        }
-    </style>
 </head>
 <body>
+    <div class="background"></div>
     <div class="wrapper">
         <h1>Matthew's Video Game Collection!</h1>
         <div class="main-container">
@@ -24,6 +15,9 @@
                 <nav class="navbar">
                     <a href="/homepage" class="back-button"><button></button></a>
                     <a href="/videogame-wishlist"><button>Wishlist</button></a>
+                    <!-- Square button to open the Snake game modal -->
+                    <a href="#" class="mute-button"><img src="images/mute.png" alt="Mute"></a>
+                    <a href="#" class="snake-button" onclick="openSnakeGameModal()"><img src="images/q-block.png" alt="Snake"></a>
                 </nav>
             </header>
             <main class="content">
@@ -40,59 +34,50 @@
             </main>
         </div>
     </div>
+
+    <!-- Modal for the mystery game -->
+    <div id="snakeGameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSnakeGameModal()">&times;</span>
+            <iframe id="snakeGameFrame" src="https://funhtml5games.com?embed=mariofps" style="width:640px;height:480px;border:none;" frameborder="0" scrolling="no" muted></iframe>
+        </div>
+    </div>
+
     <script>
-        // Create an audio element
-        var audio = new Audio('js/mii-maker.mp3');
-        
-        // Play the audio when the page is loaded
-        window.addEventListener('load', function() {
-            audio.play();
+        var audio = new Audio('music/mii-maker.mp3');
+        audio.loop = true;
+        var isPlaying = false;
+
+        document.querySelector('.mute-button').addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                this.querySelector('img').src = 'images/mute.png';
+            } else {
+                audio.play();
+                isPlaying = true;
+                this.querySelector('img').src = 'images/unmute.png';
+            }
         });
 
-        // Function to add a new item to the table
-        function addItem() {
-            var fileInput = document.getElementById('file-input');
-            var titleInput = document.getElementById('title-input');
-            var descriptionInput = document.getElementById('description-input');
-
-            // Get the file object from file input
-            var file = fileInput.files[0];
-
-            // Create a new table row
-            var table = document.getElementById('item-table');
-            var newRow = table.insertRow();
-            
-            // Create cells for image, title, and description
-            var imageCell = newRow.insertCell();
-            var titleCell = newRow.insertCell();
-            var descriptionCell = newRow.insertCell();
-
-            // Create an image element
-            var image = document.createElement('img');
-            image.src = URL.createObjectURL(file);
-            image.width = 100;
-            image.height = 100;
-            image.alt = "Image";
-
-            // Append the image to the cell
-            imageCell.appendChild(image);
-
-            // Add title and description
-            titleCell.textContent = titleInput.value;
-            descriptionCell.textContent = descriptionInput.value;
+        function openSnakeGameModal() {
+            var snakeGameFrame = document.getElementById('snakeGameFrame');
+            snakeGameFrame.src = 'https://funhtml5games.com?embed=mariofps'; // Set the iframe src back to game
+            document.getElementById('snakeGameModal').style.display = 'block';
+            if (isPlaying) {
+                audio.pause(); // Pause the background music
+            }
         }
 
-        // Function to save items (you can customize this according to your requirements)
-        function saveItems() {
-            // Here you can implement the logic to save the items, such as sending them to a server or storing them locally.
-            alert("Items saved successfully!");
+        function closeSnakeGameModal() {
+            var snakeGameFrame = document.getElementById('snakeGameFrame');
+            snakeGameFrame.src = ''; // Stop the iframe content
+            document.getElementById('snakeGameModal').style.display = 'none';
+            if (isPlaying) {
+                audio.play(); // Resume the background music if it was playing
+            }
         }
-
-        // Event listener for the Add Item button
-        document.getElementById("add-item-button").addEventListener("click", addItem);
-
-        // Event listener for the Save Items button
-        document.getElementById("save-items-button").addEventListener("click", saveItems);
+        
     </script>
     <script src="js/scripts.js"></script>
 </body>
