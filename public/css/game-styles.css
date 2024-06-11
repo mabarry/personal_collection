@@ -178,28 +178,27 @@ body::after {
     background-image: url('../images/gifs/star.gif');
 }
 
-/* Additional CSS for the modal */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
 }
 
 /* Modal content */
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* 10% from the top and centered */
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 640px; /* Could be more or less, depending on screen size */
-    height: 500pxpx;
-    overflow: hidden; /* Hide scrollbar */
+    width: 640px;
+    height: 500px;
+    overflow: hidden;
     position: relative;
 }
 
@@ -224,3 +223,201 @@ body::after {
         width: 200%;
     }
 }
+
+#item-table img {
+    max-width: 50px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+#item-table td {
+    padding-right: 10px;
+}
+
+/* Modal Styles */
+.modal.theater-mode {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+.modal-content.theater-content {
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0) 80%), black;
+    margin: 5% auto 0 auto;
+    padding: 20px;
+    border: none;
+    width: 80%;
+    height: 70%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.carousel-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.carousel-window {
+    overflow: hidden;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+#item-table img {
+    max-width: 50px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+.carousel-item img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+.table-container {
+    position: relative;
+}
+
+#addItemModal .modal-content {
+    background-color: #fefefe;
+    width: 600px; /* Fixed width for the modal */
+    height: 150px; /* Reduced height for the modal */
+    margin: 10% auto; /* Center the modal */
+    padding: 20px;
+    border: 1px solid #888;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+#add-item-button {
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    background-color: #ffffff;
+    color: #000080;
+    border-color: #000080;
+    border: solid;
+    border-width: 2px;
+    cursor: pointer;
+}
+
+#add-item-button:hover {
+    background-color: #e1e1fa;
+    border-color: #2424a5;
+    border: dashed;
+    border-width: 2px;
+}
+
+/* Styles for the modal */
+.modal-content input,
+.modal-content select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.details-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    color: #000080;
+    border-color: #000080;
+    border: solid;
+    border-width: 2px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.details-button:hover {
+    background-color: #e1e1fa;
+    border-color: #2424a5;
+    border: dashed;
+    border-width: 2px;
+}
+
+#itemDetailsModal .modal-content {
+    background-color: #fefefe;
+    width: 600px;
+    height: 550px;
+    margin: 5% auto;
+    margin-top: 150px;
+    padding: 20px;
+    border: 1px solid #888;
+    overflow-y: auto;
+}
+
+#itemDetailsModal .modal-content img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+

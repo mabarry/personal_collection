@@ -15,23 +15,45 @@
                 <nav class="navbar">
                     <a href="/homepage" class="back-button"><button></button></a>
                     <a href="/videogame-wishlist"><button>Wishlist</button></a>
-                    <!-- Square button to open the Snake game modal -->
                     <a href="#" class="mute-button"><img src="images/mute.png" alt="Mute"></a>
                     <a href="#" class="snake-button" onclick="openSnakeGameModal()"><img src="images/q-block.png" alt="Snake"></a>
                 </nav>
             </header>
             <main class="content">
-                <!-- Empty table for dynamic addition of items -->
-                <table id="item-table">
-                    <!-- Table body will be populated dynamically -->
-                </table>
-                <!-- Input fields for adding new items -->
-                <input type="file" id="file-input">
-                <input type="text" id="title-input" placeholder="Enter title">
-                <input type="text" id="description-input" placeholder="Enter description">
-                <button id="add-item-button">Add Item</button>
-                <button id="save-items-button">Save Items</button>
+                <div class="table-container">
+                    <table id="item-table"></table>
+                    <button id="add-item-button">+</button>
+                </div>
             </main>
+        </div>
+        <button id="openTheaterModeButton" onclick="openTheaterMode()">Theater Mode</button>
+    </div>
+
+    <!-- Modal for displaying detailed item information -->
+    <div id="itemDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeItemDetailsModal()">&times;</span>
+            <h2 id="item-details-title"></h2>
+            <img id="item-details-image" src="" alt="Item Image">
+            <p id="item-details-description"></p>
+            <p id="item-details-owned-on"></p>
+        </div>
+    </div>
+
+    <!-- Modal for adding a new item -->
+    <div id="addItemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddItemModal()">&times;</span>
+            <input type="text" id="title-input" placeholder="Enter title">
+            <input type="text" id="description-input" placeholder="Enter description">
+            <select id="consoles">
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="Wii">Wii</option>
+                <option value="GCN">GCN</option>
+                <option value="N64">N64</option>
+            </select> 
+            <input type="file" id="file-input">
+            <button id="add-item-modal-button">Add Item</button>
         </div>
     </div>
 
@@ -43,42 +65,22 @@
         </div>
     </div>
 
-    <script>
-        var audio = new Audio('music/mii-maker.mp3');
-        audio.loop = true;
-        var isPlaying = false;
+    <!-- Theater Mode Modal -->
+    <div id="theaterModeModal" class="modal theater-mode">
+        <div class="modal-content theater-content">
+            <span class="close" onclick="closeTheaterMode()">&times;</span>
+            <div class="carousel">
+                <button class="carousel-button left" onclick="previousItem()">&lt;</button>
+                <div class="carousel-window">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Dynamic carousel items will be here -->
+                    </div>
+                </div>
+                <button class="carousel-button right" onclick="nextItem()">&gt;</button>
+            </div>
+        </div>
+    </div>
 
-        document.querySelector('.mute-button').addEventListener('click', function() {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                this.querySelector('img').src = 'images/mute.png';
-            } else {
-                audio.play();
-                isPlaying = true;
-                this.querySelector('img').src = 'images/unmute.png';
-            }
-        });
-
-        function openSnakeGameModal() {
-            var snakeGameFrame = document.getElementById('snakeGameFrame');
-            snakeGameFrame.src = 'https://funhtml5games.com?embed=mariofps'; // Set the iframe src back to game
-            document.getElementById('snakeGameModal').style.display = 'block';
-            if (isPlaying) {
-                audio.pause(); // Pause the background music
-            }
-        }
-
-        function closeSnakeGameModal() {
-            var snakeGameFrame = document.getElementById('snakeGameFrame');
-            snakeGameFrame.src = ''; // Stop the iframe content
-            document.getElementById('snakeGameModal').style.display = 'none';
-            if (isPlaying) {
-                audio.play(); // Resume the background music if it was playing
-            }
-        }
-        
-    </script>
     <script src="js/scripts.js"></script>
 </body>
 </html>
